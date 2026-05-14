@@ -1,5 +1,23 @@
 document.addEventListener("DOMContentLoaded", function () {
     const formAgendamento = document.getElementById("formAgendamento");
+    const dataInput = document.getElementById("data");
+
+    // Configuração de restrição de datas
+    if (dataInput) {
+        // Bloqueia datas passadas (mínimo é hoje)
+        const hoje = new Date().toISOString().split("T")[0];
+        dataInput.setAttribute("min", hoje);
+
+        // Bloqueia seleção de domingos
+        dataInput.addEventListener("change", function () {
+            // Usa getUTCDay para evitar problemas de fuso horário
+            const diaSemana = new Date(this.value).getUTCDay();
+            if (diaSemana === 0) {
+                alert("A barbearia está fechada aos domingos. Por favor, selecione outra data.");
+                this.value = ""; // Limpa o campo
+            }
+        });
+    }
 
     if (formAgendamento) {
         formAgendamento.addEventListener("submit", function (e) {
