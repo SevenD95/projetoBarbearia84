@@ -316,3 +316,28 @@ section {
     font-weight: bold;
     letter-spacing: 2px;
 }
+
+/* Modal de Agendamento */
+#modalAgendamento .form-control,
+#modalAgendamento .form-select {
+    background-color: #252525;
+    border: 1px solid #444;
+    color: #fff;
+}
+
+#modalAgendamento .form-control:focus,
+#modalAgendamento .form-select:focus {
+    border-color: #d4af37;
+    box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+}
+
+#modalAgendamento .form-control::placeholder {
+    color: #888;
+}
+
+/* Altera a cor do ícone de calendário (WebKit) */
+#modalAgendamento input[type="date"]::-webkit-calendar-picker-indicator,
+#modalAgendamento input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+}
