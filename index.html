@@ -8,16 +8,42 @@
 </head>
 
 <body>
+
+    <!-- Cabeçalho -->
     <header>
-        <div class="logo">
-            <img src="img/logo.png" alt="Logo">
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+            <div class="container">
+                <a class="navbar-brand p-0" href="#">
+                    <img src="imagens/logo_barbearia.png" alt="Logo Barbearia 84"
+                        style="height: 50px; object-fit: contain;"> Barberia 84
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#servicos">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#galeria">Galeria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#depoimentos">Clientes</a>
+                        </li>
+                        <li class="nav-item">
+
+                            <a class="nav-link btn btn-outline-warning ms-lg-3 text-white" href="#contato">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
 </body>
