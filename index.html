@@ -214,6 +214,50 @@
             referrerpolicy="no-referrer-when-downgrade">
         </iframe>
     </div>
+    <!-- Modal de Agendamento -->
+    <div class="modal fade" id="modalAgendamento" tabindex="-1" aria-labelledby="modalAgendamentoLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content" style="background-color: #1e1e1e; border: 1px solid #333; color: white;">
+                <div class="modal-header" style="border-bottom: 1px solid #333;">
+                    <h5 class="modal-title" id="modalAgendamentoLabel"
+                        style="color: #d4af37; font-family: 'Oswald', sans-serif;">Agendar Horário</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formAgendamento">
+                        <div class="mb-3">
+                            <label for="nome" class="form-label">Seu Nome</label>
+                            <input type="text" class="form-control" id="nome" required
+                                placeholder="Digite seu nome primeiro e último">
+                        </div>
+                        <div class="mb-3">
+                            <label for="servico" class="form-label">Serviço</label>
+                            <select class="form-select" id="servico" required>
+                                <option value="" selected disabled>Selecione um serviço...</option>
+                                <option value="Corte Clássico">Corte Clássico - R$ 50</option>
+                                <option value="Barba de Respeito">Barba de Respeito - R$ 40</option>
+                                <option value="Combo VIP">Combo VIP - R$ 80</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="data" class="form-label">Data</label>
+                                <input type="date" class="form-control" id="data" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="hora" class="form-label">Horário</label>
+                                <input type="time" class="form-control" id="hora" required min="09:00" max="20:00">
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-warning w-100 mt-3"
+                            style="font-weight: bold; font-size: 1.1rem; padding: 12px;">Confirmar Agendamento <i
+                                class="fab fa-whatsapp ms-2"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
 
 
 </html>
