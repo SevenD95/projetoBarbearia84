@@ -40,30 +40,29 @@ document.addEventListener("DOMContentLoaded", function () {
             formAgendamento.reset();
         });
     }
-});
 
-// Lógica para ampliar imagens da galeria (Lightbox)
-const galleryItems = document.querySelectorAll('.gallery-item img');
-const modalImagemEl = document.getElementById('modalImagem');
-const imagemAmpliada = document.getElementById('imagemAmpliada');
+    // Lógica para ampliar imagens da galeria (Lightbox)
+    const galleryItems = document.querySelectorAll('.gallery-item img');
+    const modalImagemEl = document.getElementById('modalImagem');
+    const imagemAmpliada = document.getElementById('imagemAmpliada');
 
-if (modalImagemEl && imagemAmpliada) {
-    galleryItems.forEach(img => {
-        img.style.cursor = 'pointer';
+    if (modalImagemEl && imagemAmpliada) {
+        galleryItems.forEach(img => {
+            img.style.cursor = 'pointer';
 
-        img.addEventListener('click', function () {
-            // Pega a URL e o texto alternativo da imagem clicada
-            const imgSrc = this.getAttribute('src');
-            const imgAlt = this.getAttribute('alt');
+            img.addEventListener('click', function () {
+                // Pega a URL e o texto alternativo da imagem clicada
+                const imgSrc = this.getAttribute('src');
+                const imgAlt = this.getAttribute('alt');
 
-            // Atualiza a imagem dentro do modal
-            imagemAmpliada.setAttribute('src', imgSrc);
-            imagemAmpliada.setAttribute('alt', imgAlt);
+                // Atualiza a imagem dentro do modal
+                imagemAmpliada.setAttribute('src', imgSrc);
+                imagemAmpliada.setAttribute('alt', imgAlt);
 
-            // Abre o modal de imagem
-            const modalImagem = bootstrap.Modal.getOrCreateInstance(modalImagemEl);
-            modalImagem.show();
+                // Abre o modal de imagem
+                const modalImagem = bootstrap.Modal.getOrCreateInstance(modalImagemEl);
+                modalImagem.show();
+            });
         });
-    });
-}
+    }
 });
