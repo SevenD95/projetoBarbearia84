@@ -36,6 +36,12 @@ nav {
 .logo {
     font-size: 1.5rem;
     letter-spacing: 2px;
+
+}
+
+.logo_span {
+    font-weight: bold;
+    color: #d4af37;
 }
 
 .logo span {
@@ -65,16 +71,30 @@ nav ul li a:hover {
 /* Hero Section */
 .hero {
     height: 100vh;
-    min-height: 500px;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url(imagens/WhatsApp\ Image\ 2026-03-24\ at\ 18.58.37\ \(2\).jpeg);
     background-size: cover;
-    background-position: center;
-    background-attachment: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.hero {
+    height: 100vh;
+    /* Ocupa 100% da altura da tela */
+    min-height: 500px;
+    /* Garante que não fique pequeno demais em celulares antigos */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url(imagens/WhatsApp\ Image\ 2026-03-24\ at\ 18.58.37\ \(2\).jpeg);
+
+    background-size: cover;
+    /* ESSENCIAL: Faz a imagem cobrir tudo sem distorcer */
+    background-position: center;
+    /* Mantém o centro da imagem sempre visível */
+    background-attachment: scroll;
+    /* Melhor para performance no celular */
+    display: flex;
     color: white;
 }
 
@@ -131,15 +151,17 @@ nav ul li a:hover {
 }
 
 .service-card {
-    background-color: #1e1e1e;
-    padding: 30px;
-    border-radius: 10px;
-    border: 1px solid #333;
-    transition: 0.3s;
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.4s ease;
+
 }
 
 .service-card:hover {
+    transform: translateY(-10px);
     border-color: #d4af37;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .service-card h3 {
@@ -195,7 +217,7 @@ footer {
 .gallery-item img:hover {
     transform: scale(1.05);
     filter: grayscale(0%);
-    border: 2px solid #d4af37;
+    border: 2px solid #2a2002;
 }
 
 .testimonials {
@@ -281,7 +303,7 @@ footer {
 }
 
 .address {
-    margin-top: 40px;
+    margin-top: 4 0px;
     color: #aaa;
     line-height: 2;
 }
