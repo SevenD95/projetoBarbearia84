@@ -1,20 +1,30 @@
 document.addEventListener("DOMContentLoaded", function () {
     const formAgendamento = document.getElementById("formAgendamento");
-    const dataInput = document.getElementById("data");
+    // Trava a data para o dia atual
+    const inputData = document.getElementById("data");
 
-    // Configuração de restrição de datas
-    if (dataInput) {
-        // Bloqueia datas passadas (mínimo é hoje)
-        const hoje = new Date().toISOString().split("T")[0];
-        dataInput.setAttribute("min", hoje);
 
-        // Bloqueia seleção de domingos
-        dataInput.addEventListener("change", function () {
-            // Usa getUTCDay para evitar problemas de fuso horário
-            const diaSemana = new Date(this.value).getUTCDay();
+
+    if (inputData) {
+        // Configura a data mínima (hoje)
+        inputData.min = new Date().toISOString().split("T")[0];
+
+        // Ouve mudanças na data
+        inputData.addEventListener('change', function () {
+            // Evita o problema de fuso horário criando a data com ano, mês e dia locais
+            const [ano, mes, dia] = this.value.split('-');
+            const dataLocal = new Date(ano, mes - 1, dia);
+            const diaSemana = dataLocal.getDay(); // 0 = Domingo, 6 = Sábado
+
+
+            // Se for Domingo (0), alerta o usuário e limpa o campo
             if (diaSemana === 0) {
-                alert("A barbearia está fechada aos domingos. Por favor, selecione outra data.");
+                alert("Não abrimos aos domingos. Por favor, escolha outra data.");
                 this.value = ""; // Limpa o campo
+            }//Se for segunda (1), alerta o usuário e limpa o campo
+            if (diaSemana === 1) {
+                alert("Não abrimos as segunda. Por favor, escolha outra data.");
+                this.value = "";
             }
         });
     }
@@ -36,15 +46,16 @@ document.addEventListener("DOMContentLoaded", function () {
             // Mantendo o número que estava no link anterior: 5511945976278
             const numeroWhatsApp = "5511945976278";
 
-            // Mensagem formatada enviada para o WhatsApp
-            const mensagem = `Olá, Barbearia 84! Gostaria de agendar um horário.\n\n` +
-                `👤 *Nome:* ${nome}\n` +
-                `✂️ *Serviço:* ${servico}\n` +
-                `📅 *Data:* ${dataFormatada}\n` +
-                `⏰ *Horário:* ${hora}`;
+            // Monta a mensagem usando APENAS caracteres ASCII e códigos Unicode.
+            // Isso ignora completamente qualquer problema de codificação (ANSI/UTF-8) do seu editor de texto!
+            const mensagemBruta = "Ol\xE1, Barbearia 84! Gostaria de agendar um hor\xE1rio.\n\n" +
+                "\uD83D\uDC64 *Nome:* " + nome + "\n" +
+                "\u2702\uFE0F *Servi\xE7o:* " + servico + "\n" +
+                "\uD83D\uDCC5 *Data:* " + dataFormatada + "\n" +
+                "\u23F0 *Hor\xE1rio:* " + hora;
 
-            // Codifica a mensagem para formato de URL e cria o link final
-            const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+            // Cria o link final usando a API direta do WhatsApp
+            const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagemBruta)}`;
 
             // Abre o WhatsApp em uma nova aba
             window.open(url, '_blank');
