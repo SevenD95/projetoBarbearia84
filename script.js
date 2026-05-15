@@ -28,6 +28,23 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Fechar menu mobile ao clicar em um link
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link, .navbar-nav .btn');
+    const menuToggle = document.getElementById('menuNavegacao');
+    
+    if (navLinks && menuToggle) {
+        navLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+                if (menuToggle.classList.contains('show')) {
+                    const bsCollapse = new bootstrap.Collapse(menuToggle, {
+                        toggle: false
+                    });
+                    bsCollapse.hide();
+                }
+            });
+        });
+    }
+
     if (formAgendamento) {
         formAgendamento.addEventListener("submit", function (e) {
             e.preventDefault(); // Evita o recarregamento da página

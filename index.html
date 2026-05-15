@@ -31,35 +31,36 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
             <div class="container">
-                <a class="navbar-brand p-0" href="#">
+                <!-- Logo -->
+                <a class="navbar-brand p-0 d-flex align-items-center" href="#">
                     <img src="imagens/logo_final2.png" alt="Logo Barbearia 84"
-                        style="height: 60px; object-fit: contain;">
-                    Barberia <span class="logo_span">84</span>
+                        style="height: 60px; object-fit: contain; margin-right: 10px;">
+                    <span>Barbearia <span class="logo_span" style="color: #ffc107;">84</span></span>
                 </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Botão Hambúrguer para Mobile -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacao"
+                    aria-controls="menuNavegacao" aria-expanded="false" aria-label="Alternar navegação">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="n
-                avbarNav">
-                    <ul class="navbar-nav ms-auto">
+                <!-- Links do Menu -->
+                <div class="collapse navbar-collapse" id="menuNavegacao">
+                    <ul class="navbar-nav ms-auto text-center mt-3 mt-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#home">Home</a>
+                            <a class="nav-link active px-3" href="#home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#servicos">Serviços</a>
+                            <a class="nav-link px-3" href="#servicos">Serviços</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#galeria">Galeria</a>
+                            <a class="nav-link px-3" href="#galeria">Galeria</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#depoimentos">Clientes</a>
+                            <a class="nav-link px-3" href="#depoimentos">Clientes</a>
                         </li>
-                        <li class="nav-item">
-
-                            <a class="nav-link btn btn-outline-warning ms-lg-3 text-white" href="#contato">Contato</a>
+                        <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                            <a class="btn btn-outline-warning w-100 text-white" href="#contato">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -312,9 +313,9 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Adicionando o arquivo scrip.js -->
-    <script src="script.js" defer></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
