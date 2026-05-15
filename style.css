@@ -1,3 +1,14 @@
+/* Variáveis  globais CSS */
+:root {
+    --primary-gold: #d4af37;
+    --primary-gold-hover: #b8962e;
+    --bg-dark: #121212;
+    --bg-light: #1a1a1a;
+    --bg-card: #252525;
+    --text-white: #fff;
+    --text-gray: #aaa;
+}
+
 /* Configurações Gerais */
 * {
     margin: 0;
@@ -7,8 +18,8 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #121212;
-    color: #fff;
+    background-color: var(--bg-dark);
+    color: var(--text-white);
     scroll-behavior: smooth;
 }
 
@@ -39,14 +50,10 @@ nav {
 
 }
 
-.logo_span {
-    font-weight: bold;
-    color: #d4af37;
-}
-
+.logo_span,
 .logo span {
-    color: #d4af37;
-    /* Dourado */
+    font-weight: bold;
+    color: var(--primary-gold);
 }
 
 nav ul {
@@ -71,31 +78,17 @@ nav ul li a:hover {
 /* Hero Section */
 .hero {
     height: 100vh;
+    min-height: 500px;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
         url(imagens/WhatsApp\ Image\ 2026-03-24\ at\ 18.58.37\ \(2\).jpeg);
     background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-}
-
-.hero {
-    height: 100vh;
-    /* Ocupa 100% da altura da tela */
-    min-height: 500px;
-    /* Garante que não fique pequeno demais em celulares antigos */
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-        url(imagens/WhatsApp\ Image\ 2026-03-24\ at\ 18.58.37\ \(2\).jpeg);
-
-    background-size: cover;
-    /* ESSENCIAL: Faz a imagem cobrir tudo sem distorcer */
-    background-position: center;
-    /* Mantém o centro da imagem sempre visível */
-    background-attachment: scroll;
-    /* Melhor para performance no celular */
-    display: flex;
-    color: white;
+    color: var(--text-white);
 }
 
 /* Ajuste de texto para telas pequenas */
@@ -138,10 +131,13 @@ nav ul li a:hover {
     text-align: center;
 }
 
-.services h2 {
+.services h2,
+.gallery h2,
+.testimonials h2,
+.contact h2 {
     font-size: 2.5rem;
     margin-bottom: 40px;
-    color: #d4af37;
+    color: var(--primary-gold);
 }
 
 .services-grid {
@@ -190,34 +186,24 @@ footer {
     text-align: center;
 }
 
-.gallery h2 {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: #d4af37;
-}
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    /* Fotos se ajustam sozinhas */
-    gap: 15px;
-}
 
-.gallery-item img {
-    width: 100%;
-    height: 250px;
+/* Estilos do Carrossel */
+.carousel-img {
+    height: 500px;
     object-fit: cover;
-    /* Garante que a foto preencha o espaço sem esticar */
-    border-radius: 8px;
-    transition: transform 0.3s;
-    filter: grayscale(50%);
-    /* Efeito visual clássico */
+    filter: grayscale(20%);
+    transition: filter 0.5s ease;
 }
 
-.gallery-item img:hover {
-    transform: scale(1.05);
+.carousel-img:hover {
     filter: grayscale(0%);
-    border: 2px solid #2a2002;
+}
+
+@media (max-width: 768px) {
+    .carousel-img {
+        height: 350px;
+    }
 }
 
 .testimonials {
@@ -226,11 +212,7 @@ footer {
     text-align: center;
 }
 
-.testimonials h2 {
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-    color: #d4af37;
-}
+
 
 .testimonial-container {
     display: flex;
@@ -261,9 +243,7 @@ footer {
 }
 
 .contact h2 {
-    font-size: 2.5rem;
     margin-bottom: 20px;
-    color: #d4af37;
 }
 
 .contact-links {
@@ -303,13 +283,13 @@ footer {
 }
 
 .address {
-    margin-top: 4 0px;
-    color: #aaa;
+    margin-top: 40px;
+    color: var(--text-gray);
     line-height: 2;
 }
 
 .address i {
-    color: #d4af37;
+    color: var(--primary-gold);
     margin-right: 10px;
 }
 
@@ -318,12 +298,7 @@ section {
     scroll-margin-top: 70px;
 }
 
-/* Estilo da logo que você já tinha */
-.navbar-brand.logo {
-    font-family: 'Oswald', sans-serif;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
+
 
 /* Modal de Agendamento */
 #modalAgendamento .form-control,

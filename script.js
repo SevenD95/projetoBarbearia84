@@ -17,14 +17,13 @@ document.addEventListener("DOMContentLoaded", function () {
             const diaSemana = dataLocal.getDay(); // 0 = Domingo, 6 = Sábado
 
 
-            // Se for Domingo (0), alerta o usuário e limpa o campo
-            if (diaSemana === 0) {
-                alert("Não abrimos aos domingos. Por favor, escolha outra data.");
+            // Bloqueia agendamento aos domingos (0) e segundas (1)
+            //codigo melhorado
+
+            if (diaSemana === 0 || diaSemana === 1) {
+                const diaNome = diaSemana === 0 ? "domingos" : "segundas";
+                alert(`Não abrimos aos ${diaNome}. Por favor, escolha outra data.`);
                 this.value = ""; // Limpa o campo
-            }//Se for segunda (1), alerta o usuário e limpa o campo
-            if (diaSemana === 1) {
-                alert("Não abrimos as segunda. Por favor, escolha outra data.");
-                this.value = "";
             }
         });
     }
@@ -46,13 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
             // Mantendo o número que estava no link anterior: 5511945976278
             const numeroWhatsApp = "5511945976278";
 
-            // Monta a mensagem usando APENAS caracteres ASCII e códigos Unicode.
-            // Isso ignora completamente qualquer problema de codificação (ANSI/UTF-8) do seu editor de texto!
-            const mensagemBruta = "Ol\xE1, Barbearia 84! Gostaria de agendar um hor\xE1rio.\n\n" +
-                "\uD83D\uDC64 *Nome:* " + nome + "\n" +
-                "\u2702\uFE0F *Servi\xE7o:* " + servico + "\n" +
-                "\uD83D\uDCC5 *Data:* " + dataFormatada + "\n" +
-                "\u23F0 *Hor\xE1rio:* " + hora;
+            // Monta a mensagem escapando caracteres para evitar problemas de codificação
+            const mensagemBruta = `Ol\xE1, Barbearia 84! Gostaria de agendar um hor\xE1rio.\n\n` +
+                `\uD83D\uDC64 *Nome:* ${nome}\n` +
+                `\u2702\uFE0F *Servi\xE7o:* ${servico}\n` +
+                `\uD83D\uDCC5 *Data:* ${dataFormatada}\n` +
+                `\u23F0 *Hor\xE1rio:* ${hora}`;
 
             // Cria o link final usando a API direta do WhatsApp
             const url = `https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${encodeURIComponent(mensagemBruta)}`;
@@ -70,28 +68,5 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Lógica para ampliar imagens da galeria (Lightbox)
-    const galleryItems = document.querySelectorAll('.gallery-item img');
-    const modalImagemEl = document.getElementById('modalImagem');
-    const imagemAmpliada = document.getElementById('imagemAmpliada');
 
-    if (modalImagemEl && imagemAmpliada) {
-        galleryItems.forEach(img => {
-            img.style.cursor = 'pointer';
-
-            img.addEventListener('click', function () {
-                // Pega a URL e o texto alternativo da imagem clicada
-                const imgSrc = this.getAttribute('src');
-                const imgAlt = this.getAttribute('alt');
-
-                // Atualiza a imagem dentro do modal
-                imagemAmpliada.setAttribute('src', imgSrc);
-                imagemAmpliada.setAttribute('alt', imgAlt);
-
-                // Abre o modal de imagem
-                const modalImagem = bootstrap.Modal.getOrCreateInstance(modalImagemEl);
-                modalImagem.show();
-            });
-        });
-    }
 });
