@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased] - 2026-05-14
 
+### Fixed
+- **Menu Mobile (Navbar):** Refatorada a estrutura HTML da barra de navegação para resolver problemas de abertura no celular. Adicionado script (`script.js`) para fechar o menu automaticamente ao clicar em um link. Removido o atributo `defer` do Bootstrap JS para garantir o funcionamento correto dos eventos.
+
 ### Commits
 - `1fac11c` **revisão e otimização do cogido** - Ajustes finais de performance e limpeza de código não utilizado.
 - `2e94e3b` **revisão e otimização do codigo** - Melhorias nas práticas de código, ajustes de indentação e organização estrutural.
