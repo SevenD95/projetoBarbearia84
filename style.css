@@ -1,7 +1,8 @@
 /* Variáveis  globais CSS */
 :root {
-    --primary-gold: #d4af37;
-    --primary-gold-hover: #b8962e;
+    --primary-gold: #FFD700;
+    /* Dourado padrão */
+    --primary-gold-hover: #ffc107;
     --bg-dark: #121212;
     --bg-light: #1a1a1a;
     --bg-card: #252525;
