@@ -47,10 +47,6 @@ projetoBarbearia84/
 3. Abra o arquivo `index.html` em qualquer navegador web (Chrome, Firefox, Edge, etc.).
 4. Clique no botão **"Agende seu Horário"** para testar as validações do calendário e o redirecionamento para o WhatsApp Web.
 
-## 📝 Próximos Passos (Sugestões)
-- Integração com um sistema de agendamento no backend (ex: banco de dados).
-- Painel administrativo para gerenciar os horários marcados.
-- Seção de blog ou dicas de cuidados masculinos para aumentar o engajamento.
 
 ---
 Feito com dedicação para a **Barbearia 84**! 🧔✂️
