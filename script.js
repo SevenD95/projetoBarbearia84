@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Fechar menu mobile ao clicar em um link
     const navLinks = document.querySelectorAll('.navbar-nav .nav-link, .navbar-nav .btn');
     const menuToggle = document.getElementById('menuNavegacao');
-    
+
     if (navLinks && menuToggle) {
         navLinks.forEach((link) => {
             link.addEventListener('click', () => {
@@ -59,8 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const dataFormatada = data.split("-").reverse().join("/");
 
             // Número do WhatsApp da barbearia (com o código do país e DDD)
-            // Mantendo o número que estava no link anterior: 5511945976278
-            const numeroWhatsApp = "5511945976278";
+            const numeroWhatsApp = "5511913240301";
 
             // Monta a mensagem escapando caracteres para evitar problemas de codificação
             const mensagemBruta = `Ol\xE1, Barbearia 84! Gostaria de agendar um hor\xE1rio.\n\n` +
