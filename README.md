@@ -11,10 +11,17 @@ O site da **Barbearia 84** foi construído com foco na experiência do usuário 
 - **Design Responsivo:** O site se adapta perfeitamente a diferentes tamanhos de tela (celulares, tablets e desktops).
 - **Galeria Interativa:** Um carrossel de imagens para exibir os melhores cortes e serviços.
 - **Sistema de Agendamento Inteligente:** 
-  - Formulário em modal intuitivo.
+  - Formulário em modal intuitivo e moderno.
   - Validação de datas (bloqueia agendamentos em dias passados).
   - Restrição de dias úteis (bloqueia agendamentos aos domingos e segundas-feiras).
+  - Feedback visual imediato através do sistema Toast na validação de dias bloqueados e na confirmação do agendamento.
   - Integração direta com a API do WhatsApp, gerando uma mensagem pré-formatada com os detalhes do agendamento.
+- **Sistema de Notificações Toast Premium (Nativo):** 
+  - Alertas flutuantes personalizados em JavaScript puro (zero dependências externas pesadas ou quebras de script).
+  - Design sofisticado de *glassmorphism* (efeito de desfoque de fundo `backdrop-filter`) que se integra perfeitamente com a identidade visual dourada da barbearia.
+  - Barra de progresso animada mostrando de forma intuitiva o tempo de sumiço do toast.
+  - Recurso inteligente de *pause-on-hover* (congela o tempo do toast quando o ponteiro do mouse está sobre ele).
+  - Estados semânticos integrados a ícones do FontAwesome (`success`, `info`, `warning`, `error`) e botão de fechar ("×").
 - **Mapa Integrado:** Localização da barbearia fácil de encontrar via Google Maps.
 - **Navegação Suave (Smooth Scroll):** Transições fluidas ao navegar pelas seções do menu.
 

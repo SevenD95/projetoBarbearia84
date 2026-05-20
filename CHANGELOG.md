@@ -5,7 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased] - 2026-05-14
+## [Unreleased] - 2026-05-20
+
+### Added
+- **Sistema de Notificações Toast Premium:** Criado um sistema nativo e premium de notificações Toast (mensagens flutuantes temporárias) em JavaScript e CSS, sem dependências externas (jQuery/Toastr).
+  - Estilização moderna com *glassmorphism* (`backdrop-filter`) e bordas douradas/semânticas condizentes com a identidade da Barbearia 84.
+  - Animações fluidas de entrada (`slide-in` a partir da direita em desktop / topo em mobile) e de saída (`fade-out` com deslocamento vertical).
+  - Barra de progresso de tempo sutil integrada à base do toast.
+  - Funcionalidade de pause-on-hover (pausa o temporizador quando o usuário passa o mouse por cima do toast).
+  - Botão de fechamento manual rápido ("×").
+  - Adicionado suporte a múltiplos estados: `success`, `info`, `warning` e `error`.
+  - Notificação de sucesso exibida dinamicamente após o agendamento bem-sucedido: *"Agendamento preparado com sucesso! Redirecionando para o WhatsApp..."*.
+
+### Fixed
+- **Mensagens de Validação de Data:** Removido o import quebrado de `'toastr'` que causava exceção e crash de script nos navegadores devido ao formato de script estático, substituindo-o pelo sistema nativo `toast.info(...)`.
+
+## [1.0.0] - 2026-05-14
 
 ### Fixed
 - **Menu Mobile (Navbar):** Refatorada a estrutura HTML da barra de navegação para resolver problemas de abertura no celular. Adicionado script (`script.js`) para fechar o menu automaticamente ao clicar em um link. Removido o atributo `defer` do Bootstrap JS para garantir o funcionamento correto dos eventos.
