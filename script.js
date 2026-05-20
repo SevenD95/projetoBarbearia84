@@ -1,3 +1,82 @@
+// Objeto de notificação Toast personalizado, moderno e de alta performance
+const toast = {
+    show(message, type = 'info', duration = 4000) {
+        let container = document.getElementById('toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.id = 'toast-container';
+            document.body.appendChild(container);
+        }
+
+        const toastEl = document.createElement('div');
+        toastEl.className = `custom-toast toast-${type}`;
+
+        let iconClass = 'fa-info-circle';
+        if (type === 'success') iconClass = 'fa-check-circle';
+        if (type === 'error') iconClass = 'fa-exclamation-circle';
+        if (type === 'warning') iconClass = 'fa-exclamation-triangle';
+
+        toastEl.innerHTML = `
+            <i class="fas ${iconClass} toast-icon"></i>
+            <span class="toast-message">${message}</span>
+            <button class="toast-close-btn" aria-label="Fechar">&times;</button>
+        `;
+
+        container.appendChild(toastEl);
+
+        // Força o reflow para iniciar a animação
+        toastEl.offsetHeight;
+
+        // Ativa a animação de entrada
+        toastEl.classList.add('show');
+
+        const closeBtn = toastEl.querySelector('.toast-close-btn');
+        let autoTimeout;
+
+        const dismissToast = () => {
+            if (toastEl.classList.contains('hide')) return;
+            toastEl.classList.remove('show');
+            toastEl.classList.add('hide');
+
+            // Fallback para remoção caso transitionend não dispare
+            const fallbackTimeout = setTimeout(() => {
+                toastEl.remove();
+                if (container.children.length === 0) {
+                    container.remove();
+                }
+            }, 500);
+
+            toastEl.addEventListener('transitionend', function handler() {
+                clearTimeout(fallbackTimeout);
+                toastEl.removeEventListener('transitionend', handler);
+                toastEl.remove();
+                if (container.children.length === 0) {
+                    container.remove();
+                }
+            });
+        };
+
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            clearTimeout(autoTimeout);
+            dismissToast();
+        });
+
+        // Remove automaticamente após o tempo determinado
+        autoTimeout = setTimeout(dismissToast, duration);
+
+        // Pausa temporizador no hover do mouse para melhor usabilidade
+        toastEl.addEventListener('mouseenter', () => clearTimeout(autoTimeout));
+        toastEl.addEventListener('mouseleave', () => {
+            autoTimeout = setTimeout(dismissToast, 2000); // Dá mais 2 segundos após tirar o mouse
+        });
+    },
+    info(message, duration) { this.show(message, 'info', duration); },
+    success(message, duration) { this.show(message, 'success', duration); },
+    error(message, duration) { this.show(message, 'error', duration); },
+    warning(message, duration) { this.show(message, 'warning', duration); }
+};
+
 document.addEventListener("DOMContentLoaded", function () {
     const formAgendamento = document.getElementById("formAgendamento");
     // Trava a data para o dia atual
@@ -22,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (diaSemana === 0 || diaSemana === 1) {
                 const diaNome = diaSemana === 0 ? "domingos" : "segundas";
-                alert(`Não abrimos aos ${diaNome}. Por favor, escolha outra data.`);
+                toast.info(`Não abrimos aos ${diaNome}. Por favor, escolha outra data.`);
                 this.value = ""; // Limpa o campo
             }
         });
@@ -73,6 +152,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Abre o WhatsApp em uma nova aba
             window.open(url, '_blank');
+
+            // Exibir toast de sucesso
+            toast.success("Agendamento preparado com sucesso! Redirecionando para o WhatsApp...");
 
             // Fechar o modal e limpar o formulário
             const modalEl = document.getElementById("modalAgendamento");
